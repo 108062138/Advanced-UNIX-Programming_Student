@@ -43,5 +43,6 @@ int main(){
         strncat(read_line, &ch, 1);
     }
     printf("%s\n", read_line);
+    close(fd);
     return 0;
 }
