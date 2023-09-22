@@ -4,6 +4,8 @@
 #include <fcntl.h>
 #include <string.h>
 
+char buffer[100], read_line[100], ch;
+
 int main(){
     int fd = open("sample.txt", O_RDWR);
     if(fd == -1){
@@ -16,7 +18,6 @@ int main(){
         printf("Error changing file offset to 14\n");
         exit(1);
     }
-    char buffer[100];
     ssize_t bytes_read = read(fd, buffer, strlen("student.")*sizeof(char));
     if(bytes_read == -1){
         printf("Error reading file\n");
@@ -35,7 +36,6 @@ int main(){
         printf("Error changing file offset to 0\n");
         exit(1);
     }
-    char read_line[100], ch;
     while((bytes_read = read(fd, &ch, sizeof(char))) > 0){
         if(ch == '\n'){
             break;
